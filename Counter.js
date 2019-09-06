@@ -6,7 +6,7 @@ const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) =>
         <button onClick={onIncrementAsync}>
       I   increment after 1 second
         </button>
-        [' '}
+        {' '}
         <button onClick={onIncrement}>
           Increment
         </button>

@@ -7,12 +7,15 @@ import createSagaMiddleware from 'redux-saga'
 
 import Counter from './Counter'
 import reducer from './reducers'
-import {helloSaga} from './sagas'
+import rootSaga from './sagas'
 
+const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
-  reducer, 
-  applyMiddleware(createSagaMiddleware(helloSaga))
+  reducer,
+  applyMiddleware(sagaMiddleware)
 )
+
+sagaMiddleware.run(rootSaga)
 
 const action = type => store.dispatch({type})
 
@@ -28,4 +31,4 @@ function render() {
 }
 
 render()
-store.subscribe(render)
+store.subscribe(render)    //change the state and rerender
